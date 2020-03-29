@@ -1,113 +1,113 @@
 [[Sundials]]
 arch = "aarch64"
-git-tree-sha1 = "f4bc37a4672090c93c20b8cd07984eeb3f7d20b6"
+git-tree-sha1 = "c909fbf2c404287dc6a205f410b2e51a342b564c"
 libc = "musl"
 os = "linux"
 
     [[Sundials.download]]
-    sha256 = "8640999343c725bfa8ee42b5fb230eed0f3ad7a2fe08b2f746a57325f82c3a14"
-    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+0/Sundials.v3.1.2.aarch64-linux-musl.tar.gz"
+    sha256 = "d6cf7baed8305341dd2d2c52b1833aa60c6f9123b3896ac60c0211e870d12d49"
+    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+1/Sundials.v3.1.2.aarch64-linux-musl.tar.gz"
 [[Sundials]]
 arch = "i686"
-git-tree-sha1 = "523c6fbdb5b976a516517bf1108cd5aa96b9d877"
+git-tree-sha1 = "b3ed88f6b6fc3f3f6b8ad0721dda192db05b243a"
 os = "windows"
 
     [[Sundials.download]]
-    sha256 = "872f0d81cb476f3061697e04310a6a491d63679f30815176e00b67a6773d3e58"
-    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+0/Sundials.v3.1.2.i686-w64-mingw32.tar.gz"
+    sha256 = "19331a41cd8b6f9caa7d8e49332cf92fba171858e696d2bab6cb36be9357cfbc"
+    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+1/Sundials.v3.1.2.i686-w64-mingw32.tar.gz"
 [[Sundials]]
 arch = "x86_64"
-git-tree-sha1 = "f4afd83b19603a4b29c0f40ff037d290cae9804c"
+git-tree-sha1 = "4eff2aad07d5eb37e8defc96be42370ab3b518d1"
 libc = "musl"
 os = "linux"
 
     [[Sundials.download]]
-    sha256 = "e716e8ec30dea92306e2da5165f0f5f11ee3198789463e34bd24015b1650eec9"
-    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+0/Sundials.v3.1.2.x86_64-linux-musl.tar.gz"
+    sha256 = "622e8240fcb1a474f78bb7d5ef275420b7bc7bc1928ef06a9426e99f70bf4a8a"
+    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+1/Sundials.v3.1.2.x86_64-linux-musl.tar.gz"
 [[Sundials]]
 arch = "i686"
-git-tree-sha1 = "167f71904ff806e3836bccd024571e1e31bc126b"
+git-tree-sha1 = "41faefd55d1019ff90ec73e2681bab1e0c43cfc7"
 libc = "glibc"
 os = "linux"
 
     [[Sundials.download]]
-    sha256 = "54e3591a93314ff876aa64bbcd475fa2b6b92dbb2d78f462fe35e334b722ae29"
-    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+0/Sundials.v3.1.2.i686-linux-gnu.tar.gz"
+    sha256 = "568057dbb2b5c7ef1ae439753e74e9211ceab58cb4ac6cb78c1f8d12c448c5c3"
+    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+1/Sundials.v3.1.2.i686-linux-gnu.tar.gz"
 [[Sundials]]
 arch = "armv7l"
-git-tree-sha1 = "f57be0f7b65ea918b23f087710191dd30ba7eabd"
+git-tree-sha1 = "1baa62279576b72733dd5af46c22534d6ca303f3"
 libc = "glibc"
 os = "linux"
 
     [[Sundials.download]]
-    sha256 = "3549f13abb7e279bcd341c1c10d5ee8c500eaa4ffb5e250c9dce4acc0110f8a7"
-    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+0/Sundials.v3.1.2.armv7l-linux-gnueabihf.tar.gz"
+    sha256 = "f5009ff21623dfc6593617f9f95305c0fa8c3aea0e03ca36b0883f53e56c8bd9"
+    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+1/Sundials.v3.1.2.armv7l-linux-gnueabihf.tar.gz"
 [[Sundials]]
 arch = "aarch64"
-git-tree-sha1 = "36880006f905ed165212a30b464d08bdb1c6daef"
+git-tree-sha1 = "dfc4afa40c0de2353e9b0f0a9740b8033b6849f1"
 libc = "glibc"
 os = "linux"
 
     [[Sundials.download]]
-    sha256 = "1b0abe140ad34763116b28e0fdec8b46611f5161f1886c63cf7ecd3ea8b7a3f5"
-    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+0/Sundials.v3.1.2.aarch64-linux-gnu.tar.gz"
+    sha256 = "2f58a93517014136f360e031ceab5cb3e6c13ba1fa3cc8270a6c44d9f6de5b1f"
+    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+1/Sundials.v3.1.2.aarch64-linux-gnu.tar.gz"
 [[Sundials]]
 arch = "x86_64"
-git-tree-sha1 = "fc02eeb462f983547ce8d43c7518979daadb1910"
+git-tree-sha1 = "e6ab86e395592b37073aa1756cd0aa2fdbbd5e4c"
 libc = "glibc"
 os = "linux"
 
     [[Sundials.download]]
-    sha256 = "575c86f8ff38f7ec5ad31c62f5bde843fe1bf935a370a080fff94d53390ff38a"
-    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+0/Sundials.v3.1.2.x86_64-linux-gnu.tar.gz"
+    sha256 = "ad008fbcc16c1433d8d3e087d5e59e6c149ef0163986ce50f008988856321b59"
+    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+1/Sundials.v3.1.2.x86_64-linux-gnu.tar.gz"
 [[Sundials]]
 arch = "powerpc64le"
-git-tree-sha1 = "117d65e694b6017b9a5450db875550ed004e288c"
+git-tree-sha1 = "d6546f3799792d4341346f4843b228f103c6244f"
 libc = "glibc"
 os = "linux"
 
     [[Sundials.download]]
-    sha256 = "9dc8fd3858316a096a8a8399c8660f4ba2ee20ca77458ad7336a74bf65aa0547"
-    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+0/Sundials.v3.1.2.powerpc64le-linux-gnu.tar.gz"
+    sha256 = "0eb98f07b3efe0553e62c68bd65b141a071f3fa92ba5c5a3cfc240d7ebdb535e"
+    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+1/Sundials.v3.1.2.powerpc64le-linux-gnu.tar.gz"
 [[Sundials]]
 arch = "x86_64"
-git-tree-sha1 = "bd7cd645828b7f5464477fc50ca723306107fcc4"
+git-tree-sha1 = "f7adf93707c31cee667fda0d90a6410a58c4e5b1"
 os = "macos"
 
     [[Sundials.download]]
-    sha256 = "842765322d8cbfdafecc740e8e46cb07548a4a39d4f7084438bad1b21761b8d1"
-    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+0/Sundials.v3.1.2.x86_64-apple-darwin14.tar.gz"
+    sha256 = "5f65dcc8cbee951dc59662e9bcfab6877eceb7b54c64cc62f0feaa5ae7da1b17"
+    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+1/Sundials.v3.1.2.x86_64-apple-darwin14.tar.gz"
 [[Sundials]]
 arch = "x86_64"
-git-tree-sha1 = "297b7b7dbd126b3688922ed6687ce3c479cb0879"
+git-tree-sha1 = "48aa63ff03eac7795e195daf2b1918f9b0ab00ae"
 os = "freebsd"
 
     [[Sundials.download]]
-    sha256 = "19699e4f016fc73c0b54df291108dd8324a1873e627ed5dddab0c1af01ab7496"
-    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+0/Sundials.v3.1.2.x86_64-unknown-freebsd11.1.tar.gz"
+    sha256 = "0701702f1a60af901e1524b13f3fd26b363ad3449f7dfd244d07d878ec28a89a"
+    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+1/Sundials.v3.1.2.x86_64-unknown-freebsd11.1.tar.gz"
 [[Sundials]]
 arch = "i686"
-git-tree-sha1 = "a9fa76486a7808f8a4915961ee205cb7612c2b04"
+git-tree-sha1 = "7363b6eaff5da6166008b622df6547abf30acc98"
 libc = "musl"
 os = "linux"
 
     [[Sundials.download]]
-    sha256 = "a7714417b4abbbf3e107893444aed8313c615d892867153510dcd919a27a4379"
-    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+0/Sundials.v3.1.2.i686-linux-musl.tar.gz"
+    sha256 = "cd0c9a640f89b3b5f8272e2dc3ee538a42bb58f72d194ee70fd90448afd4996a"
+    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+1/Sundials.v3.1.2.i686-linux-musl.tar.gz"
 [[Sundials]]
 arch = "armv7l"
-git-tree-sha1 = "4a2b731b471edfd8af79e7bb460c51ba70267a2b"
+git-tree-sha1 = "5fa141bafe170baa49a117c7755f684f8be7bd9a"
 libc = "musl"
 os = "linux"
 
     [[Sundials.download]]
-    sha256 = "a60759bc9087accc76a82620058e5cd479928ff2297cea06f0b897275efb3513"
-    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+0/Sundials.v3.1.2.armv7l-linux-musleabihf.tar.gz"
+    sha256 = "5fd2be1af519d37039458d68f01311be458724774422a64ff3d9c1f34005c6a4"
+    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+1/Sundials.v3.1.2.armv7l-linux-musleabihf.tar.gz"
 [[Sundials]]
 arch = "x86_64"
-git-tree-sha1 = "f9b9a2eae8bd22801ece8177a1621bd53851b30a"
+git-tree-sha1 = "74854d8da5e8e8eb2ef5b074c34d3c8085b95043"
 os = "windows"
 
     [[Sundials.download]]
-    sha256 = "044e1c4c85fe0c832886d84f0afccce7cde4e9a931c70809f9c45aa19296c2ec"
-    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+0/Sundials.v3.1.2.x86_64-w64-mingw32.tar.gz"
+    sha256 = "fe3465de8701359bb14ec64d3a8f5e3b4c45321f236d945c5a31b2f572c758d0"
+    url = "https://github.com/JuliaBinaryWrappers/Sundials_jll.jl/releases/download/Sundials-v3.1.2+1/Sundials.v3.1.2.x86_64-w64-mingw32.tar.gz"
