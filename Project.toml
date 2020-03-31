@@ -1,6 +1,6 @@
 name = "Sundials_jll"
 uuid = "fb77eaff-e24c-56d4-86b1-d163f2edb164"
-version = "5.1.0+1"
+version = "5.2.0+0"
 
 [deps]
 Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
