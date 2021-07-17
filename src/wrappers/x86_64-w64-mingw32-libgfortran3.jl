@@ -4,514 +4,169 @@ export libsundials_arkode, libsundials_cvode, libsundials_cvodes, libsundials_id
 using CompilerSupportLibraries_jll
 using OpenBLAS_jll
 using SuiteSparse_jll
-## Global variables
-PATH = ""
-LIBPATH = ""
-LIBPATH_env = "PATH"
-LIBPATH_default = ""
-
-# Relative path to `libsundials_arkode`
-const libsundials_arkode_splitpath = ["bin", "libsundials_arkode.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_arkode_path = ""
-
-# libsundials_arkode-specific global declaration
-# This will be filled out by __init__()
-libsundials_arkode_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_arkode = "libsundials_arkode.dll"
-
-
-# Relative path to `libsundials_cvode`
-const libsundials_cvode_splitpath = ["bin", "libsundials_cvode.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_cvode_path = ""
-
-# libsundials_cvode-specific global declaration
-# This will be filled out by __init__()
-libsundials_cvode_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_cvode = "libsundials_cvode.dll"
-
-
-# Relative path to `libsundials_cvodes`
-const libsundials_cvodes_splitpath = ["bin", "libsundials_cvodes.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_cvodes_path = ""
-
-# libsundials_cvodes-specific global declaration
-# This will be filled out by __init__()
-libsundials_cvodes_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_cvodes = "libsundials_cvodes.dll"
-
-
-# Relative path to `libsundials_ida`
-const libsundials_ida_splitpath = ["bin", "libsundials_ida.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_ida_path = ""
-
-# libsundials_ida-specific global declaration
-# This will be filled out by __init__()
-libsundials_ida_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_ida = "libsundials_ida.dll"
-
-
-# Relative path to `libsundials_idas`
-const libsundials_idas_splitpath = ["bin", "libsundials_idas.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_idas_path = ""
-
-# libsundials_idas-specific global declaration
-# This will be filled out by __init__()
-libsundials_idas_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_idas = "libsundials_idas.dll"
-
-
-# Relative path to `libsundials_kinsol`
-const libsundials_kinsol_splitpath = ["bin", "libsundials_kinsol.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_kinsol_path = ""
-
-# libsundials_kinsol-specific global declaration
-# This will be filled out by __init__()
-libsundials_kinsol_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_kinsol = "libsundials_kinsol.dll"
-
-
-# Relative path to `libsundials_nvecmanyvector`
-const libsundials_nvecmanyvector_splitpath = ["bin", "libsundials_nvecmanyvector.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_nvecmanyvector_path = ""
-
-# libsundials_nvecmanyvector-specific global declaration
-# This will be filled out by __init__()
-libsundials_nvecmanyvector_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_nvecmanyvector = "libsundials_nvecmanyvector.dll"
-
-
-# Relative path to `libsundials_nvecserial`
-const libsundials_nvecserial_splitpath = ["bin", "libsundials_nvecserial.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_nvecserial_path = ""
-
-# libsundials_nvecserial-specific global declaration
-# This will be filled out by __init__()
-libsundials_nvecserial_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_nvecserial = "libsundials_nvecserial.dll"
-
-
-# Relative path to `libsundials_sunlinsolband`
-const libsundials_sunlinsolband_splitpath = ["bin", "libsundials_sunlinsolband.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunlinsolband_path = ""
-
-# libsundials_sunlinsolband-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunlinsolband_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunlinsolband = "libsundials_sunlinsolband.dll"
-
-
-# Relative path to `libsundials_sunlinsoldense`
-const libsundials_sunlinsoldense_splitpath = ["bin", "libsundials_sunlinsoldense.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunlinsoldense_path = ""
-
-# libsundials_sunlinsoldense-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunlinsoldense_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunlinsoldense = "libsundials_sunlinsoldense.dll"
-
-
-# Relative path to `libsundials_sunlinsolklu`
-const libsundials_sunlinsolklu_splitpath = ["bin", "libsundials_sunlinsolklu.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunlinsolklu_path = ""
-
-# libsundials_sunlinsolklu-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunlinsolklu_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunlinsolklu = "libsundials_sunlinsolklu.dll"
-
-
-# Relative path to `libsundials_sunlinsollapackband`
-const libsundials_sunlinsollapackband_splitpath = ["bin", "libsundials_sunlinsollapackband.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunlinsollapackband_path = ""
-
-# libsundials_sunlinsollapackband-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunlinsollapackband_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunlinsollapackband = "libsundials_sunlinsollapackband.dll"
-
-
-# Relative path to `libsundials_sunlinsollapackdense`
-const libsundials_sunlinsollapackdense_splitpath = ["bin", "libsundials_sunlinsollapackdense.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunlinsollapackdense_path = ""
-
-# libsundials_sunlinsollapackdense-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunlinsollapackdense_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunlinsollapackdense = "libsundials_sunlinsollapackdense.dll"
-
-
-# Relative path to `libsundials_sunlinsolpcg`
-const libsundials_sunlinsolpcg_splitpath = ["bin", "libsundials_sunlinsolpcg.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunlinsolpcg_path = ""
-
-# libsundials_sunlinsolpcg-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunlinsolpcg_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunlinsolpcg = "libsundials_sunlinsolpcg.dll"
-
-
-# Relative path to `libsundials_sunlinsolspbcgs`
-const libsundials_sunlinsolspbcgs_splitpath = ["bin", "libsundials_sunlinsolspbcgs.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunlinsolspbcgs_path = ""
-
-# libsundials_sunlinsolspbcgs-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunlinsolspbcgs_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunlinsolspbcgs = "libsundials_sunlinsolspbcgs.dll"
-
-
-# Relative path to `libsundials_sunlinsolspfgmr`
-const libsundials_sunlinsolspfgmr_splitpath = ["bin", "libsundials_sunlinsolspfgmr.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunlinsolspfgmr_path = ""
-
-# libsundials_sunlinsolspfgmr-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunlinsolspfgmr_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunlinsolspfgmr = "libsundials_sunlinsolspfgmr.dll"
-
-
-# Relative path to `libsundials_sunlinsolspgmr`
-const libsundials_sunlinsolspgmr_splitpath = ["bin", "libsundials_sunlinsolspgmr.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunlinsolspgmr_path = ""
-
-# libsundials_sunlinsolspgmr-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunlinsolspgmr_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunlinsolspgmr = "libsundials_sunlinsolspgmr.dll"
-
-
-# Relative path to `libsundials_sunlinsolsptfqmr`
-const libsundials_sunlinsolsptfqmr_splitpath = ["bin", "libsundials_sunlinsolsptfqmr.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunlinsolsptfqmr_path = ""
-
-# libsundials_sunlinsolsptfqmr-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunlinsolsptfqmr_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunlinsolsptfqmr = "libsundials_sunlinsolsptfqmr.dll"
-
-
-# Relative path to `libsundials_sunmatrixband`
-const libsundials_sunmatrixband_splitpath = ["bin", "libsundials_sunmatrixband.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunmatrixband_path = ""
-
-# libsundials_sunmatrixband-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunmatrixband_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunmatrixband = "libsundials_sunmatrixband.dll"
-
-
-# Relative path to `libsundials_sunmatrixdense`
-const libsundials_sunmatrixdense_splitpath = ["bin", "libsundials_sunmatrixdense.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunmatrixdense_path = ""
-
-# libsundials_sunmatrixdense-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunmatrixdense_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunmatrixdense = "libsundials_sunmatrixdense.dll"
-
-
-# Relative path to `libsundials_sunmatrixsparse`
-const libsundials_sunmatrixsparse_splitpath = ["bin", "libsundials_sunmatrixsparse.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunmatrixsparse_path = ""
-
-# libsundials_sunmatrixsparse-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunmatrixsparse_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunmatrixsparse = "libsundials_sunmatrixsparse.dll"
-
-
-# Relative path to `libsundials_sunnonlinsolfixedpoint`
-const libsundials_sunnonlinsolfixedpoint_splitpath = ["bin", "libsundials_sunnonlinsolfixedpoint.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunnonlinsolfixedpoint_path = ""
-
-# libsundials_sunnonlinsolfixedpoint-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunnonlinsolfixedpoint_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunnonlinsolfixedpoint = "libsundials_sunnonlinsolfixedpoint.dll"
-
-
-# Relative path to `libsundials_sunnonlinsolnewton`
-const libsundials_sunnonlinsolnewton_splitpath = ["bin", "libsundials_sunnonlinsolnewton.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libsundials_sunnonlinsolnewton_path = ""
-
-# libsundials_sunnonlinsolnewton-specific global declaration
-# This will be filled out by __init__()
-libsundials_sunnonlinsolnewton_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libsundials_sunnonlinsolnewton = "libsundials_sunnonlinsolnewton.dll"
-
-
-"""
-Open all libraries
-"""
+JLLWrappers.@generate_wrapper_header("Sundials")
+JLLWrappers.@declare_library_product(libsundials_arkode, "libsundials_arkode.dll")
+JLLWrappers.@declare_library_product(libsundials_cvode, "libsundials_cvode.dll")
+JLLWrappers.@declare_library_product(libsundials_cvodes, "libsundials_cvodes.dll")
+JLLWrappers.@declare_library_product(libsundials_ida, "libsundials_ida.dll")
+JLLWrappers.@declare_library_product(libsundials_idas, "libsundials_idas.dll")
+JLLWrappers.@declare_library_product(libsundials_kinsol, "libsundials_kinsol.dll")
+JLLWrappers.@declare_library_product(libsundials_nvecmanyvector, "libsundials_nvecmanyvector.dll")
+JLLWrappers.@declare_library_product(libsundials_nvecserial, "libsundials_nvecserial.dll")
+JLLWrappers.@declare_library_product(libsundials_sunlinsolband, "libsundials_sunlinsolband.dll")
+JLLWrappers.@declare_library_product(libsundials_sunlinsoldense, "libsundials_sunlinsoldense.dll")
+JLLWrappers.@declare_library_product(libsundials_sunlinsolklu, "libsundials_sunlinsolklu.dll")
+JLLWrappers.@declare_library_product(libsundials_sunlinsollapackband, "libsundials_sunlinsollapackband.dll")
+JLLWrappers.@declare_library_product(libsundials_sunlinsollapackdense, "libsundials_sunlinsollapackdense.dll")
+JLLWrappers.@declare_library_product(libsundials_sunlinsolpcg, "libsundials_sunlinsolpcg.dll")
+JLLWrappers.@declare_library_product(libsundials_sunlinsolspbcgs, "libsundials_sunlinsolspbcgs.dll")
+JLLWrappers.@declare_library_product(libsundials_sunlinsolspfgmr, "libsundials_sunlinsolspfgmr.dll")
+JLLWrappers.@declare_library_product(libsundials_sunlinsolspgmr, "libsundials_sunlinsolspgmr.dll")
+JLLWrappers.@declare_library_product(libsundials_sunlinsolsptfqmr, "libsundials_sunlinsolsptfqmr.dll")
+JLLWrappers.@declare_library_product(libsundials_sunmatrixband, "libsundials_sunmatrixband.dll")
+JLLWrappers.@declare_library_product(libsundials_sunmatrixdense, "libsundials_sunmatrixdense.dll")
+JLLWrappers.@declare_library_product(libsundials_sunmatrixsparse, "libsundials_sunmatrixsparse.dll")
+JLLWrappers.@declare_library_product(libsundials_sunnonlinsolfixedpoint, "libsundials_sunnonlinsolfixedpoint.dll")
+JLLWrappers.@declare_library_product(libsundials_sunnonlinsolnewton, "libsundials_sunnonlinsolnewton.dll")
 function __init__()
-    global artifact_dir = abspath(artifact"Sundials")
+    JLLWrappers.@generate_init_header(CompilerSupportLibraries_jll, OpenBLAS_jll, SuiteSparse_jll)
+    JLLWrappers.@init_library_product(
+        libsundials_arkode,
+        "bin\\libsundials_arkode.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    # Initialize PATH and LIBPATH environment variable listings
-    global PATH_list, LIBPATH_list
-    # From the list of our dependencies, generate a tuple of all the PATH and LIBPATH lists,
-    # then append them to our own.
-    foreach(p -> append!(PATH_list, p), (CompilerSupportLibraries_jll.PATH_list, OpenBLAS_jll.PATH_list, SuiteSparse_jll.PATH_list,))
-    foreach(p -> append!(LIBPATH_list, p), (CompilerSupportLibraries_jll.LIBPATH_list, OpenBLAS_jll.LIBPATH_list, SuiteSparse_jll.LIBPATH_list,))
+    JLLWrappers.@init_library_product(
+        libsundials_cvode,
+        "bin\\libsundials_cvode.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    global libsundials_arkode_path = normpath(joinpath(artifact_dir, libsundials_arkode_splitpath...))
+    JLLWrappers.@init_library_product(
+        libsundials_cvodes,
+        "bin\\libsundials_cvodes.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_arkode_handle = dlopen(libsundials_arkode_path)
-    push!(LIBPATH_list, dirname(libsundials_arkode_path))
+    JLLWrappers.@init_library_product(
+        libsundials_ida,
+        "bin\\libsundials_ida.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    global libsundials_cvode_path = normpath(joinpath(artifact_dir, libsundials_cvode_splitpath...))
+    JLLWrappers.@init_library_product(
+        libsundials_idas,
+        "bin\\libsundials_idas.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_cvode_handle = dlopen(libsundials_cvode_path)
-    push!(LIBPATH_list, dirname(libsundials_cvode_path))
+    JLLWrappers.@init_library_product(
+        libsundials_kinsol,
+        "bin\\libsundials_kinsol.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    global libsundials_cvodes_path = normpath(joinpath(artifact_dir, libsundials_cvodes_splitpath...))
+    JLLWrappers.@init_library_product(
+        libsundials_nvecmanyvector,
+        "bin\\libsundials_nvecmanyvector.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_cvodes_handle = dlopen(libsundials_cvodes_path)
-    push!(LIBPATH_list, dirname(libsundials_cvodes_path))
+    JLLWrappers.@init_library_product(
+        libsundials_nvecserial,
+        "bin\\libsundials_nvecserial.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    global libsundials_ida_path = normpath(joinpath(artifact_dir, libsundials_ida_splitpath...))
+    JLLWrappers.@init_library_product(
+        libsundials_sunlinsolband,
+        "bin\\libsundials_sunlinsolband.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_ida_handle = dlopen(libsundials_ida_path)
-    push!(LIBPATH_list, dirname(libsundials_ida_path))
+    JLLWrappers.@init_library_product(
+        libsundials_sunlinsoldense,
+        "bin\\libsundials_sunlinsoldense.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    global libsundials_idas_path = normpath(joinpath(artifact_dir, libsundials_idas_splitpath...))
+    JLLWrappers.@init_library_product(
+        libsundials_sunlinsolklu,
+        "bin\\libsundials_sunlinsolklu.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_idas_handle = dlopen(libsundials_idas_path)
-    push!(LIBPATH_list, dirname(libsundials_idas_path))
+    JLLWrappers.@init_library_product(
+        libsundials_sunlinsollapackband,
+        "bin\\libsundials_sunlinsollapackband.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    global libsundials_kinsol_path = normpath(joinpath(artifact_dir, libsundials_kinsol_splitpath...))
+    JLLWrappers.@init_library_product(
+        libsundials_sunlinsollapackdense,
+        "bin\\libsundials_sunlinsollapackdense.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_kinsol_handle = dlopen(libsundials_kinsol_path)
-    push!(LIBPATH_list, dirname(libsundials_kinsol_path))
+    JLLWrappers.@init_library_product(
+        libsundials_sunlinsolpcg,
+        "bin\\libsundials_sunlinsolpcg.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    global libsundials_nvecmanyvector_path = normpath(joinpath(artifact_dir, libsundials_nvecmanyvector_splitpath...))
+    JLLWrappers.@init_library_product(
+        libsundials_sunlinsolspbcgs,
+        "bin\\libsundials_sunlinsolspbcgs.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_nvecmanyvector_handle = dlopen(libsundials_nvecmanyvector_path)
-    push!(LIBPATH_list, dirname(libsundials_nvecmanyvector_path))
+    JLLWrappers.@init_library_product(
+        libsundials_sunlinsolspfgmr,
+        "bin\\libsundials_sunlinsolspfgmr.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    global libsundials_nvecserial_path = normpath(joinpath(artifact_dir, libsundials_nvecserial_splitpath...))
+    JLLWrappers.@init_library_product(
+        libsundials_sunlinsolspgmr,
+        "bin\\libsundials_sunlinsolspgmr.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_nvecserial_handle = dlopen(libsundials_nvecserial_path)
-    push!(LIBPATH_list, dirname(libsundials_nvecserial_path))
+    JLLWrappers.@init_library_product(
+        libsundials_sunlinsolsptfqmr,
+        "bin\\libsundials_sunlinsolsptfqmr.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    global libsundials_sunlinsolband_path = normpath(joinpath(artifact_dir, libsundials_sunlinsolband_splitpath...))
+    JLLWrappers.@init_library_product(
+        libsundials_sunmatrixband,
+        "bin\\libsundials_sunmatrixband.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunlinsolband_handle = dlopen(libsundials_sunlinsolband_path)
-    push!(LIBPATH_list, dirname(libsundials_sunlinsolband_path))
+    JLLWrappers.@init_library_product(
+        libsundials_sunmatrixdense,
+        "bin\\libsundials_sunmatrixdense.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    global libsundials_sunlinsoldense_path = normpath(joinpath(artifact_dir, libsundials_sunlinsoldense_splitpath...))
+    JLLWrappers.@init_library_product(
+        libsundials_sunmatrixsparse,
+        "bin\\libsundials_sunmatrixsparse.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunlinsoldense_handle = dlopen(libsundials_sunlinsoldense_path)
-    push!(LIBPATH_list, dirname(libsundials_sunlinsoldense_path))
+    JLLWrappers.@init_library_product(
+        libsundials_sunnonlinsolfixedpoint,
+        "bin\\libsundials_sunnonlinsolfixedpoint.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    global libsundials_sunlinsolklu_path = normpath(joinpath(artifact_dir, libsundials_sunlinsolklu_splitpath...))
+    JLLWrappers.@init_library_product(
+        libsundials_sunnonlinsolnewton,
+        "bin\\libsundials_sunnonlinsolnewton.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunlinsolklu_handle = dlopen(libsundials_sunlinsolklu_path)
-    push!(LIBPATH_list, dirname(libsundials_sunlinsolklu_path))
-
-    global libsundials_sunlinsollapackband_path = normpath(joinpath(artifact_dir, libsundials_sunlinsollapackband_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunlinsollapackband_handle = dlopen(libsundials_sunlinsollapackband_path)
-    push!(LIBPATH_list, dirname(libsundials_sunlinsollapackband_path))
-
-    global libsundials_sunlinsollapackdense_path = normpath(joinpath(artifact_dir, libsundials_sunlinsollapackdense_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunlinsollapackdense_handle = dlopen(libsundials_sunlinsollapackdense_path)
-    push!(LIBPATH_list, dirname(libsundials_sunlinsollapackdense_path))
-
-    global libsundials_sunlinsolpcg_path = normpath(joinpath(artifact_dir, libsundials_sunlinsolpcg_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunlinsolpcg_handle = dlopen(libsundials_sunlinsolpcg_path)
-    push!(LIBPATH_list, dirname(libsundials_sunlinsolpcg_path))
-
-    global libsundials_sunlinsolspbcgs_path = normpath(joinpath(artifact_dir, libsundials_sunlinsolspbcgs_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunlinsolspbcgs_handle = dlopen(libsundials_sunlinsolspbcgs_path)
-    push!(LIBPATH_list, dirname(libsundials_sunlinsolspbcgs_path))
-
-    global libsundials_sunlinsolspfgmr_path = normpath(joinpath(artifact_dir, libsundials_sunlinsolspfgmr_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunlinsolspfgmr_handle = dlopen(libsundials_sunlinsolspfgmr_path)
-    push!(LIBPATH_list, dirname(libsundials_sunlinsolspfgmr_path))
-
-    global libsundials_sunlinsolspgmr_path = normpath(joinpath(artifact_dir, libsundials_sunlinsolspgmr_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunlinsolspgmr_handle = dlopen(libsundials_sunlinsolspgmr_path)
-    push!(LIBPATH_list, dirname(libsundials_sunlinsolspgmr_path))
-
-    global libsundials_sunlinsolsptfqmr_path = normpath(joinpath(artifact_dir, libsundials_sunlinsolsptfqmr_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunlinsolsptfqmr_handle = dlopen(libsundials_sunlinsolsptfqmr_path)
-    push!(LIBPATH_list, dirname(libsundials_sunlinsolsptfqmr_path))
-
-    global libsundials_sunmatrixband_path = normpath(joinpath(artifact_dir, libsundials_sunmatrixband_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunmatrixband_handle = dlopen(libsundials_sunmatrixband_path)
-    push!(LIBPATH_list, dirname(libsundials_sunmatrixband_path))
-
-    global libsundials_sunmatrixdense_path = normpath(joinpath(artifact_dir, libsundials_sunmatrixdense_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunmatrixdense_handle = dlopen(libsundials_sunmatrixdense_path)
-    push!(LIBPATH_list, dirname(libsundials_sunmatrixdense_path))
-
-    global libsundials_sunmatrixsparse_path = normpath(joinpath(artifact_dir, libsundials_sunmatrixsparse_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunmatrixsparse_handle = dlopen(libsundials_sunmatrixsparse_path)
-    push!(LIBPATH_list, dirname(libsundials_sunmatrixsparse_path))
-
-    global libsundials_sunnonlinsolfixedpoint_path = normpath(joinpath(artifact_dir, libsundials_sunnonlinsolfixedpoint_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunnonlinsolfixedpoint_handle = dlopen(libsundials_sunnonlinsolfixedpoint_path)
-    push!(LIBPATH_list, dirname(libsundials_sunnonlinsolfixedpoint_path))
-
-    global libsundials_sunnonlinsolnewton_path = normpath(joinpath(artifact_dir, libsundials_sunnonlinsolnewton_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libsundials_sunnonlinsolnewton_handle = dlopen(libsundials_sunnonlinsolnewton_path)
-    push!(LIBPATH_list, dirname(libsundials_sunnonlinsolnewton_path))
-
-    # Filter out duplicate and empty entries in our PATH and LIBPATH entries
-    filter!(!isempty, unique!(PATH_list))
-    filter!(!isempty, unique!(LIBPATH_list))
-    global PATH = join(PATH_list, ';')
-    global LIBPATH = join(vcat(LIBPATH_list, [Sys.BINDIR, joinpath(Sys.BINDIR, Base.LIBDIR, "julia"), joinpath(Sys.BINDIR, Base.LIBDIR)]), ';')
-
-    
+    JLLWrappers.@generate_init_footer()
 end  # __init__()
-
