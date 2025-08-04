@@ -1,6 +1,6 @@
 name = "Sundials_jll"
 uuid = "fb77eaff-e24c-56d4-86b1-d163f2edb164"
-version = "7.4.0+0"
+version = "7.4.0+1"
 
 [deps]
 JLLWrappers = "692b3bcd-3c85-4b1f-b108-f13ce0eb3210"
