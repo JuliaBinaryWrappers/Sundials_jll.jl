@@ -2,8 +2,8 @@
 export libsundials_arkode, libsundials_core, libsundials_cvode, libsundials_cvodes, libsundials_ida, libsundials_idas, libsundials_kinsol, libsundials_nvecmanyvector, libsundials_nvecserial, libsundials_sunlinsolband, libsundials_sunlinsoldense, libsundials_sunlinsolklu, libsundials_sunlinsollapackband, libsundials_sunlinsollapackdense, libsundials_sunlinsolpcg, libsundials_sunlinsolspbcgs, libsundials_sunlinsolspfgmr, libsundials_sunlinsolspgmr, libsundials_sunlinsolsptfqmr, libsundials_sunmatrixband, libsundials_sunmatrixdense, libsundials_sunmatrixsparse, libsundials_sunnonlinsolfixedpoint, libsundials_sunnonlinsolnewton
 
 using CompilerSupportLibraries_jll
-using libblastrampoline_jll
-using SuiteSparse_jll
+using OpenBLAS32_jll
+using SuiteSparse32_jll
 JLLWrappers.@generate_wrapper_header("Sundials")
 JLLWrappers.@declare_library_product(libsundials_arkode, "@rpath/libsundials_arkode.6.dylib")
 JLLWrappers.@declare_library_product(libsundials_core, "@rpath/libsundials_core.7.dylib")
@@ -30,7 +30,7 @@ JLLWrappers.@declare_library_product(libsundials_sunmatrixsparse, "@rpath/libsun
 JLLWrappers.@declare_library_product(libsundials_sunnonlinsolfixedpoint, "@rpath/libsundials_sunnonlinsolfixedpoint.4.dylib")
 JLLWrappers.@declare_library_product(libsundials_sunnonlinsolnewton, "@rpath/libsundials_sunnonlinsolnewton.4.dylib")
 function __init__()
-    JLLWrappers.@generate_init_header(CompilerSupportLibraries_jll, libblastrampoline_jll, SuiteSparse_jll)
+    JLLWrappers.@generate_init_header(CompilerSupportLibraries_jll, OpenBLAS32_jll, SuiteSparse32_jll)
     JLLWrappers.@init_library_product(
         libsundials_arkode,
         "lib/libsundials_arkode.6.4.0.dylib",
